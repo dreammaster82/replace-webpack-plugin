@@ -19,6 +19,7 @@ function Replace(config) {
   this.data = config.data;
   this.hash = config.hash;
   this.hashValue = config.hashValue;
+  this.replaceWithAssets = config.replaceWithAssets || [];
 }
 
 Replace.prototype.apply = function (compiler) {
@@ -46,7 +47,6 @@ Replace.prototype.apply = function (compiler) {
           let reg;
           for(let i = assetsKeys.length; i--;){
             reg = new RegExp(it.assetReg);
-            console.log(reg, assetsKeys[i]);
             if(reg.test(assetsKeys[i])){
               reg = new RegExp('\\' + it.search, 'g');
               data = data.replace(reg, assetsKeys[i]);
