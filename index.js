@@ -39,8 +39,23 @@ Replace.prototype.apply = function (compiler) {
 
     compiler.plugin('done', function (stats) {
       if (self.hash) {
+        var changeWith = typeof self.hashValue === 'string' ? self.hashValue : stats.hash,
+          assetsKeys = Object.keys(stats.compilation.assets);
+
+        self.replaceWithAssets.forEach(it => {
+          let reg;
+          for(let i = assetsKeys.length; i--;){
+            reg = new RegExp(it.assetReg);
+            console.log(reg, assetsKeys[i]);
+            if(reg.test(assetsKeys[i])){
+              reg = new RegExp('\\' + it.search, 'g');
+              data = data.replace(reg, assetsKeys[i]);
+              break;
+            }
+          }
+        });
         var reg = new RegExp('\\' + self.hash, 'g');
-        var changeWith = typeof self.hashValue === 'string' ? self.hashValue : stats.hash;
+
         data = data.replace(reg, changeWith);
       }
       fs.writeFileSync(output, data);
