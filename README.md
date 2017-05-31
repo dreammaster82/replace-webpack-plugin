@@ -40,7 +40,10 @@ var config = {
       data: {
         css: '<link type="text/css" rel="stylesheet" href="styles.css">',
         js: '<script src="bundle.js"></script>'
-      }
+      },
+      /* use replaceWithAssets should be replaced 'styles.css' to asset key with regexp assetReg
+      replaceWithAssets: [{search: 'styles.css', assetReg: 'css.css'}]
+      */
     })
   ]
   ...
