@@ -34,7 +34,7 @@ Replace.prototype.apply = function (compiler) {
       matches.forEach(function (match) {
         var str = match[0];
         var key = match[4];
-        data = data.replace(str, '\n' + self.data[key] + '\n');
+		if (key in self.data) data = data.replace(str, '\n' + self.data[key] + '\n');
       });
     }
 
