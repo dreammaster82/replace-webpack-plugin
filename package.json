@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/otelnov/replace-webpack-plugin/issues"
   },
-  "homepage": "https://github.com/otelnov/replace-webpack-plugin"
+  "homepage": "https://github.com/otelnov/replace-webpack-plugin",
+  "dependencies": {
+    "html-minifier": "^3.5.9"
+  }
 }
